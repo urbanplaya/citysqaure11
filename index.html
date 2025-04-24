@@ -225,6 +225,45 @@
   margin-bottom: 2rem;
 }
 
+
+.external-link {
+  display: inline-block;
+  color: #0066cc;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px dashed #ccc;
+  padding: 0.3rem 0;
+}
+
+.external-link:hover {
+  color: #003366;
+  border-bottom: 1px solid #003366;
+  text-decoration: underline;
+}
+
+.external-link::after {
+  content: " ↗";
+  font-size: 0.9em;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 비율 */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  margin: 2rem auto;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
   </style>
   <script>
 
@@ -310,7 +349,7 @@
     <h2>신속통합기획 아카이브</h2>
     <p>신속통합기획과 관련된 주요 메뉴로 바로 연결해보세요.</p>
     <div class="svg-links">
-      <a href="#" onclick="showSection('about')">정책 소개</a>
+      <a href="#" onclick="showSection('about')">신속통합기획이란?</a>
       <a href="#" onclick="showSection('regions')">아카이브</a>
       <a href="#" onclick="showSection('related')">원팀</a>
 
@@ -325,11 +364,31 @@
     </div>
 
 
-    <h3>📌 최신 뉴스</h3>
+    <h3>📌 자료 업데이트 </h3>
     <ul>
-      <li>2025.04.20 - 서울시, 신속통합기획 대상지 15곳 추가 선정</li>
-      <li>2025.04.12 - 국토부와 공동 정책세미나 개최: 공공성 확대 방안 논의</li>
-      <li>2025.03.30 - 주민참여형 정비기획 공모전 성황리 종료</li>
+      <li><span>2025.04.23 -  <strong>미아동 345-1일대</strong> 신속통합기획 확정…지역성장 이끄는 주거단지 발돋움</span>
+
+        <a href="https://www.seoul.go.kr/news/news_report.do#view/434095" target="_blank" rel="noopener noreferrer" class="external-link">
+          <small> 보도자료</small>
+         </a>
+      </li>
+      <li><span>2025.04.15 - 둘리 살던 <strong>‘쌍문동’ 100번째 신속통합기획</strong> …1,900세대 주거단지로 재탄생</span>
+        <a href="https://www.seoul.go.kr/news/news_report.do#view/433537" target="_blank" rel="noopener noreferrer" class="external-link">
+          <small> 보도자료</small>
+         </a>
+      </li>
+      <li><span>2025.04.09. - <strong>‘신속통합기획’ 도시정비형 재개발</strong> 로 확대…서울 도심 개발 활력 불어넣는다</span>
+        <a href="https://www.seoul.go.kr/news/news_report.do#view/433150" target="_blank" rel="noopener noreferrer" class="external-link">
+          <small> 보도자료</small>
+         </a>
+      </li>
+
+      <li><span>2025.03.23. - <strong>신림6구역 </strong> 착수 7개월 만에 신속통합기획 확정, 신림동 일대 대규모 신흥주거지 변모 박차</span>
+        <a href="https://www.seoul.go.kr/news/news_report.do#view/431694" target="_blank" rel="noopener noreferrer" class="external-link">
+        <small>   보도자료</small>
+         </a>
+      </li>
+
     </ul>
   </div>
   <div id="about" class="section container">
@@ -462,6 +521,24 @@
 
 
 
+            <iframe
+        title="Sketchfab 모델"
+        frameborder="0"
+        allowfullscreen
+        mozallowfullscreen="true"
+        webkitallowfullscreen="true"
+        allow="autoplay; fullscreen; xr-spatial-tracking"
+        xr-spatial-tracking
+        execution-while-out-of-viewport
+        execution-while-not-rendered
+        web-share
+        width="100%"
+        height="480"
+        src="https://sketchfab.com/models/c6c241d1348d4eb3bc5cac0360bedefe/embed?autostart=1">
+      </iframe>
+            <small style="display:block; color:#666; font-style:italic; margin-top: 0.5rem;">
+              신림1구역 도시건축 통합기획 3D모델
+            </small>
 
   <iframe
         width="100%"
@@ -475,24 +552,6 @@
       <small style="display:block; color:#666; font-style:italic; margin-top: 0.5rem;">📽️ 신속통합기획 관련 유튜브 영상</small>
 
 
-      <iframe
-  title="Sketchfab 모델"
-  frameborder="0"
-  allowfullscreen
-  mozallowfullscreen="true"
-  webkitallowfullscreen="true"
-  allow="autoplay; fullscreen; xr-spatial-tracking"
-  xr-spatial-tracking
-  execution-while-out-of-viewport
-  execution-while-not-rendered
-  web-share
-  width="100%"
-  height="480"
-  src="https://sketchfab.com/models/c6c241d1348d4eb3bc5cac0360bedefe/embed?autostart=1">
-</iframe>
-      <small style="display:block; color:#666; font-style:italic; margin-top: 0.5rem;">
-        신림1구역 도시건축 통합기획 3D모델
-      </small>
 
 
 
@@ -967,15 +1026,37 @@
 
             <div id="workshop" class="section container">
             <h2 class="section-title">워크샵</h2>
-            <p class="section-subtitle">더 빠르게, 더 유연하게, 더 창의적인 도시 만들기</p>
+            <p class="section-subtitle">더 나은 주거지, 더 나은 서울을 만들기 위한 생각 공유</p>
+            <h4>2022 신속통합기획 워크샵</h4>
 
-            <h4>도시건축 통합기획 워크샵 2024</h4>
-            <p>2024년 11월 서울도시건축전시관에서 개최된 기획 워크샵은 서울시 신속통합기획의 실험적 적용 사례를 공유하는 자리였습니다.</p>
-            <ul>
-              <li>신림1구역 사례 발표</li>
-              <li>주민 참여형 기획 프로세스 워크플로우</li>
-              <li>디지털 트윈 기반 기획 시뮬레이션 체험</li>
-            </ul>
+
+
+<img src="http://www.areyou.co.kr/news/photo/202207/72762_56120_307.jpg" alt="관련 이미지" style="width:100%; max-width:1024px;">
+          <p>‘서울 도시·주택정책의 패러다임 전환, 신속통합기획의 의의와 발전방향’을 주제로 <2022년 신속통합기획 워크숍>을 개최했다. 30일 동대문디자인플라자(DDP)에서 열린 이번 워크숍은 기획에 참여하고 있는 신속통합기획가(MP), 관련 위원회 위원 등 도시·건축 전문가 50여명이 참석해 열띤 토론을 이어나갔다.
+          </p>
+
+      <p>워크숍의 1부 순서로 ▲ 서울의 도시개발 흐름과 신속통합기획의 도입취지 ▲ 서울시 재개발, 재건축 신속통합기획 추진현황, 2부 순서로는 ▲ 신속통합기획의 발전방향과 위원회의 역할 ▲ 신속통합기획 운영절차 및 주요사례에 대해 서울시 관계자의 발제가 이어졌다.</p>
+
+      <p>강병근 서울시 총괄건축가는 기조발언을 통해 “기획이 실행까지 이어지기 위해서는 다양한 전문가의 검토를 거쳐 기획(안)을 수립하고, 위원회는 기획 취지대로 진행됐는지 검증하는 역할을 해야 한다”며 계획 결정 시스템의 개선 필요성을 강조했다.</p>
+
+        <p>위원회 체계에 대한 혁신이 이뤄졌단 점에서 신속통합기획이 재조명되기도 했다. 서울시 명예시장 구자훈 교수(한양대학교)는 “기존의 양적 성장 시대에서 절차적으로만 진행됐던 위원회 체계는 바뀌어야 한다”며, “신속통합기획이 질적인 면을 우선하는 통합 시대의 시작점이 됐다”고 평가했다. 또한 그는 “신속통합기획이 그간의 관행적으로 진행돼 온 ‘계획 입안과 결정 과정의 분리’, ‘민간과 공공의 단절’, ‘도시와 건축의 단절’이라는 한계를 극복했다는데 시대적으로 큰 의의가 있다”고 강조했다. 아울러 “공공은 주민의 입장에서 내가 살 단지라는 생각으로 고민하고, 주민은 공공의 입장을 이해하려는 노력이 필요하다”고 제언했다.</p>
+
+
+            <a href="https://www.seoul.go.kr/news/news_report.do#view/366811?tr_code=m_snews"
+               class="external-link"
+               target="_blank"
+               rel="noopener noreferrer">
+              🔗 서울시 보도자료 보기 (새 창에서 열기)
+            </a>
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/msRESIb9Z30"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
           </div>
 
 
@@ -985,13 +1066,29 @@
   <h2 class="section-title">전시</h2>
   <p class="section-subtitle">신속통합기획 성과를 시민과 공유하다</p>
 
-  <h4>2024 도시정책 아카이브 전시</h4>
-  <p>서울도시건축전시관에서 진행된 본 전시는 67개 대상지의 기획안을 시각화하여 시민이 직접 보고 느낄 수 있도록 구성되었습니다.</p>
-  <ul>
-    <li>대상지 패널 67개 전시</li>
-    <li>3D 모델 및 VR 체험 공간</li>
-    <li>참여 전문가 인터뷰 영상</li>
-  </ul>
+  <h4>도시를 보는 새로운 시선, 신속통합기획 전시(2024)</h4>
+  <img src="https://news.seoul.go.kr/citybuild/files/2024/11/677b34fba85513.56250569-2048x1036.jpg" alt="관련 이미지" style="width:100%; max-width:1024px;">
+
+  <p>서울시가 신속통합기획 전시회를 2024년 11월 22일부터 2024년 3월 30일까지 서울도시건축전시관(중구 세종대로 119) 비움홀에서 개최했다. 신속통합기획 3년의 성과를 시민과 함께 공유하는 특별한 장으로 꾸며졌다. </p>
+  <p>‘함께 만들어가는「도시를 보는 새로운 시선」신속통합기획’을 주제로 한 이번 전시는 주민과의 협력 과정, 주요 프로젝트의 구체적인 성과물, 지속 가능한 도시 환경 조성을 위한 새로운 시도들을 다채로운 방법으로 담고 있다.
+   ○ 관람객들이 직접 다양한 신속통합기획의 사업지와 전략을 가까이에서 조망하고, 이를 통해 미래 도시의 모습과 그 가치에 대해 깊이 있게 이해할 수 있도록 했다.</p>
+
+<ul>
+
+
+  <li>전시명: 함께 만들어가는 "도시를 보는 새로운 시선" 신속통합기획</li>
+  <li>전시기간: 2024.11.22.(금) ~ 2025.03.30.(일) (매주 월요일 휴관) *전시기간 연장 </li>
+  <li>관람시간: 10:00~18:00 (입장마감 17:30)</li>
+  <li>관람료: 무료</li>
+<li>  전시 장소: 서울도시건축전시관 지하3층 비움홀, 갤러리3 (서울시 중구 세종대로 119) </li>
+
+</ul>
+<a href="https://www.seoul.go.kr/news/news_report.do#view/423454?tr_code=m_snews"
+   class="external-link"
+   target="_blank"
+   rel="noopener noreferrer">
+  🔗 서울시 보도자료 보기 (새 창에서 열기)
+</a>
 </div>
 
 
