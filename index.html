@@ -152,6 +152,23 @@
 .project-list li {
   line-height: 1.6;
 }
+.section-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.75rem;
+  margin-bottom: 0.2rem;
+  border-bottom: 2px solid #000;
+  padding-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-style: italic;
+  font-weight: 300;
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+}
   </style>
   <script>
 
@@ -211,19 +228,17 @@
           <a class="nav-link" href="#" onclick="showSection('about')">정책 소개</a>
           <div class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="regionDropdown" role="button" data-bs-toggle="dropdown">
-              대상지별 기획내용
+              신속통합기획 대상지
             </a>
             <ul class="dropdown-menu" style="left: 0; top: 100%;" aria-labelledby="regionDropdown">
-              <li><a class="dropdown-item" href="#" onclick="showSection('regions')">전체</a></li>
-              <li><a class="dropdown-item" href="#" onclick="showSection('region-north')">동북권</a></li>
-              <li><a class="dropdown-item" href="#" onclick="showSection('region-center')">도심권</a></li>
-              <li><a class="dropdown-item" href="#" onclick="showSection('region-northwest')">서북권</a></li>
-              <li><a class="dropdown-item" href="#" onclick="showSection('region-southwest')">서남권</a></li>
-              <li><a class="dropdown-item" href="#" onclick="showSection('region-southeast')">동남권</a></li>
+              <li><a class="dropdown-item" href="#" onclick="showSection('regions')">지도로 보기</a></li>
+              <li><a class="dropdown-item" href="#" onclick="showSection('region-north')">권역별 보기</a></li>
+              <li><a class="dropdown-item" href="#" onclick="showSection('region-center')">연도별 보기</a></li>
+
             </ul>
           </div>
-          <a class="nav-link" href="#" onclick="showSection('map')">지도로 보기</a>
-          <a class="nav-link" href="#" onclick="showSection('related')">참가자</a>
+          <a class="nav-link" href="#" onclick="showSection('map')">주요사업지</a>
+          <a class="nav-link" href="#" onclick="showSection('related')">원팀(One Team)</a>
         </div>
         <form class="d-flex search-bar ms-auto">
           <input type="search" placeholder="검색어 입력" aria-label="Search">
@@ -237,9 +252,9 @@
     <p>신속통합기획과 관련된 주요 메뉴로 바로 연결해보세요.</p>
     <div class="svg-links">
       <a href="#" onclick="showSection('about')">정책 소개</a>
-      <a href="#" onclick="showSection('regions')">대상지별 기획</a>
-      <a href="#" onclick="showSection('map')">지도로 보기</a>
-      <a href="#" onclick="showSection('related')">참가자</a>
+      <a href="#" onclick="showSection('regions')">신속통합기획 대상지</a>
+      <a href="#" onclick="showSection('map')">대표 사례</a>
+      <a href="#" onclick="showSection('related')">원팀</a>
     </div>
 
 
@@ -338,21 +353,36 @@
   </div>
 
     <div id="map" class="section container">
-      <h2>지도로 보기</h2>
-      <iframe src="https://map.vworld.kr/map/scripts/apps/openapi/openApiMap.do" width="100%" height="600" allowfullscreen></iframe>
-      <p>※ VWorld 제공 항공/위성 지도 기반</p>
+      <h2 class="section-title">주요 사업지</h2>
+      <p class="section-subtitle">신속통합기획이 추구하는 가치를 보여주는 대표적 계획 사례를 소개 합니다.</p>
+
     </div>
 
       <div id="regions" class="section container">
-        <h2>서울시 전체 </h2>
+        <h2 class="section-title">지도로 보기</h2>
+        <p class="section-subtitle">한눈에 보는 신속통합기획</p>
 
-        <p>※ VWorld 제공 항공/위성 지도 기반</p>
-
+        <!-- 지도 타이틀 밑에 삽입 -->
+        <div class="map-wrapper" style="text-align: center; margin-top: 2rem;">
+          <iframe
+            width="100%"
+            height="480"
+            frameborder="0"
+            scrolling="no"
+            marginheight="0"
+            marginwidth="0"
+            src="https://map.kakao.com/?urlX=959210&urlY=1949471&urlLevel=6&map_type=TYPE_SKYVIEW">
+          </iframe>
+          <small style="display: block; font-style: italic; color: #777; margin-top: 0.5rem;">
+            ⓒ Kakao 지도 위성뷰 – 서울시 전체 조망 (국립중앙박물관 중심)
+          </small>
+        </div>
 
       </div>
 
       <div id="related" class="section container">
-        <h2>참가자</h2>
+        <h2 class="section-title">원팀 (One Team)</h2>
+        <p class="section-subtitle">서울형 정비계획을 함께 만든 도시전문가 집단</p>
 
         <div class="row">
           <!-- 📌 좌측 세로 네비게이션 (1/4) -->
@@ -623,7 +653,10 @@
 
 
       <div id="region-north" class="section container">
-        <h2>동북권</h2>
+        <h2 class="section-title">권역별 보기</h2>
+        <p class="section-subtitle">우리 동네 신속통합기획 대상지는 어디에 있을까요?</p>
+
+        <h4>동북권</h4>
 
         <!-- 📌 탭 메뉴 -->
         <ul class="nav nav-tabs mb-3" id="northTabs">
@@ -639,7 +672,6 @@
 
         <!-- 📌 탭 콘텐츠 -->
         <div id="gb" class="district-tab">
-          <h4>강북구</h4>
           <table class="table table-bordered">
             <thead>
               <tr><th>대상지 명</th><th>위치</th><th>구역 면적</th></tr>
@@ -772,22 +804,11 @@
       </div>
 
       <div id="region-center" class="section container">
-        <h2>도심권</h2>
+        <h2 class="section-title">연도별 보기</h2>
+        <p class="section-subtitle">지난 5년 동안 주민들이 원하는 곳 어디에나 신속통합기획이 지원이 이루어졌습니다.</p>
 
-         <p>도심은...</p>
 
-                 <!-- 📌 탭 메뉴 -->
-                 <ul class="nav nav-tabs mb-3" id="northTabs">
-                   <li class="nav-item"><a class="nav-link active" href="#" onclick="showDistrict('jn')">종로구</a></li>
-                   <li class="nav-item"><a class="nav-link" href="#" onclick="showDistrict('jg')">중구</a></li>
-                   <li class="nav-item"><a class="nav-link" href="#" onclick="showDistrict('ys')">용산구</a></li>
-                 </ul>
 
-                 <!-- 📌 탭 콘텐츠 -->
-
-                 <div id="jn" class="district-tab" style="display:none;"><h4>종로구</h4><p>종ㄹ로구 대상지 준비중입니다.</p></div>
-                 <div id="jg" class="district-tab" style="display:none;"><h4>중구</h4><p>중구 대상지 준비중입니다.</p></div>
-                 <div id="ys" class="district-tab" style="display:none;"><h4>용산구</h4><p>용산구 대상지 준비중입니다.</p></div>
 
 
       <div id="region-southwest" class="section container">
