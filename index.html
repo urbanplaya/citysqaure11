@@ -86,6 +86,12 @@
   .svg-links a:nth-child(3) { background-color: #F9B900; }
   .svg-links a:nth-child(4) { background-color: #D5D5D5; }
 
+  .svg-links a:nth-child(5) { background-color: #73FDFF; }
+  .svg-links a:nth-child(6) { background-color: #5E5E5E; }
+  .svg-links a:nth-child(7) { background-color: #EBEBEB; }
+.svg-links a:nth-child(8) { background-color: #EBEBEB; }
+.svg-links a:nth-child(9) { background-color: #EBEBEB; }
+.svg-links a:nth-child(10) { background-color: #EBEBEB; }
 .timeline {
   border-left: 3px solid #cccccc;
   margin-left: 1rem;
@@ -215,6 +221,9 @@
   color: #333;
 }
 
+#legal-about, #legal-related,#legal-workshop,#legal-exhibition {
+  margin-bottom: 2rem;
+}
 
   </style>
   <script>
@@ -281,11 +290,11 @@
               <li><a class="dropdown-item" href="#" onclick="showSection('regions')">지도로 보기</a></li>
               <li><a class="dropdown-item" href="#" onclick="showSection('region-north')">권역별 보기</a></li>
               <li><a class="dropdown-item" href="#" onclick="showSection('region-center')">연도별 보기</a></li>
+              <li><a class="dropdown-item" href="#" onclick="showSection('related')">원팀</a></li>
 
             </ul>
           </div>
           <a class="nav-link" href="#" onclick="showSection('map')">기획사례</a>
-          <a class="nav-link" href="#" onclick="showSection('related')">원팀</a>
           <a class="nav-link" href="#" onclick="showSection('workshop')">워크샵</a>
           <a class="nav-link" href="#" onclick="showSection('exhibition')">전시</a>
 
@@ -298,13 +307,21 @@
   </nav>
 
   <div id="home" class="section container">
-    <h2>홈</h2>
+    <h2>신속통합기획 아카이브</h2>
     <p>신속통합기획과 관련된 주요 메뉴로 바로 연결해보세요.</p>
     <div class="svg-links">
       <a href="#" onclick="showSection('about')">정책 소개</a>
-      <a href="#" onclick="showSection('regions')">신속통합기획 대상지</a>
-      <a href="#" onclick="showSection('map')">주요 사업</a>
+      <a href="#" onclick="showSection('regions')">아카이브</a>
       <a href="#" onclick="showSection('related')">원팀</a>
+
+      <a href="#" onclick="showSection('map')">주요 사업</a>
+      <a href="#" onclick="showSection('workshop')">워크샵</a>
+      <a href="#" onclick="showSection('exhibition')">전시</a>
+<a href="#" onclick="showSection('exhibition')"></a>
+<a href="#" onclick="showSection('exhibition')"></a>
+<a href="#" onclick="showSection('exhibition')"></a>
+<a href="#" onclick="showSection('exhibition')"></a>
+
     </div>
 
 
@@ -330,7 +347,7 @@
 
       <!-- 📌 우측 콘텐츠 (3/4) -->
       <div class="col-md-9">
-        <section id="legal" class="mb-4">
+        <section id="legal-about" class="mb-4">
           <p>신속통합기획은 재건축 재개발 활성화를 위해 서울시가 도입한 도시•주택정책이 다. 정비계획(도시계획) 단계에서 서울시 지원을 통해 도시건축 교통환경 분야 를 통합한 계획이 선제적으로 이루어진다. 사업지 별로 어떻게 해야 개발이 실현 될수 있는지, 어떻게 하면 더 좋은 도시공간으로 바뀔수 있는지 다양한 이해당사 자들과 함께 소통하며 서로의 의견을 반영하여 계획을 만든다. 이러한 과정을 통 해 만들어진 신속통합기획 가이드라인은 빠른 정비사업을 위한 지름길이다. 사 업자는 가이드라인에 맞춰 개발계획을 신속히 수립 할수 있고, 서울시는 복잡한 인허가 절차가 빠르게 진행되도록 지원한다.</p>
 신속통합기획은 사업 실현이 가능한 '공공성'을 제시한다. 과거 정비계획은 경직 된 도시계획 규제로 공공성을 우선시하였다. 아파트의 최고 층수는 정해져 있었 고, 용적률로 대변되는 용도지역은 변화의 여지가 없었다. 신속통합기획에서는 사업실현을 우선 고려하여 공공성을 제시한다. 획일적인 높이 규제는 더 유연하 게, 경직된 용도지역은 입지와 공간수요에 맞게 변경한다. 과거의 도시규제에서 탈피, 지역맞춤형 도시계획 지원을 통해 도시공간의 변화를 이루어내는 것이다.</p>
   <p>신속통합기획은 서울시 정비사업의 역사를 새로 쓰고 있다. 24년 11월 현재 정 비사업 추진구역 138개소에서 신속통합기획을 통한 계획지원이 이루어지고 있 으며, 88개소(약 16만호)는 신속통합기획이 완료되었다. 또한 기획 완료된 사업 지중 27개 사업지에 대한 정비계획 결정고시가 완료 되어, 사업시행인가 절차를 밟 고 있다. 수년간 서울시 내 신규 재개발 정비구역 지정이 거의 이루어지지 않았다는 점을 감안하면, 신속통합기획 정책 도입 3년의 성과는 분명히 조명 되어야 한다.</p>
@@ -520,7 +537,7 @@
           <!-- 📌 우측 콘텐츠 (3/4) -->
           <div class="col-md-9">
 
-            <section id="legal" class="mb-4">
+            <section id="legal-related" class="mb-4">
       <div class="person-list">
 
 
@@ -684,7 +701,7 @@
           <!-- 📌 우측 콘텐츠 (3/4) -->
           <div class="col-md-9">
 
-            <section id="legal" class="mb-4">
+            <section id="legal-related" class="mb-4">
         <div class="person-list">
 
 
@@ -930,7 +947,7 @@
         <h2 class="section-title">연도별 보기</h2>
         <p class="section-subtitle">지난 5년 동안 주민들이 원하는 곳 어디에나 신속통합기획이 지원이 이루어졌습니다.</p>
 
-
+</div>
 
 
 
@@ -949,16 +966,33 @@
 
 
             <div id="workshop" class="section container">
-              <h2 class="section-title">워크샵</h2>
-              <p class="section-subtitle">더 빠르게, 더 유연하게, 더 창의적인 도시 만들기</p>
-        </div>
+            <h2 class="section-title">워크샵</h2>
+            <p class="section-subtitle">더 빠르게, 더 유연하게, 더 창의적인 도시 만들기</p>
+
+            <h4>도시건축 통합기획 워크샵 2024</h4>
+            <p>2024년 11월 서울도시건축전시관에서 개최된 기획 워크샵은 서울시 신속통합기획의 실험적 적용 사례를 공유하는 자리였습니다.</p>
+            <ul>
+              <li>신림1구역 사례 발표</li>
+              <li>주민 참여형 기획 프로세스 워크플로우</li>
+              <li>디지털 트윈 기반 기획 시뮬레이션 체험</li>
+            </ul>
+          </div>
 
 
 
-                    <div id="exhibition" class="section container">
-                      <h2 class="section-title">전시</h2>
-                      <p class="section-subtitle">더 빠르게, 더 유연하게, 더 창의적인 도시 만들기</p>
-                </div>
+
+<div id="exhibition" class="section container">
+  <h2 class="section-title">전시</h2>
+  <p class="section-subtitle">신속통합기획 성과를 시민과 공유하다</p>
+
+  <h4>2024 도시정책 아카이브 전시</h4>
+  <p>서울도시건축전시관에서 진행된 본 전시는 67개 대상지의 기획안을 시각화하여 시민이 직접 보고 느낄 수 있도록 구성되었습니다.</p>
+  <ul>
+    <li>대상지 패널 67개 전시</li>
+    <li>3D 모델 및 VR 체험 공간</li>
+    <li>참여 전문가 인터뷰 영상</li>
+  </ul>
+</div>
 
 
   <footer>
