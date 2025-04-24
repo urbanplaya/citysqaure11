@@ -140,14 +140,11 @@
   </style>
   <script>
 
-    window.onload = () => {
-      const hash = window.location.hash.substring(1); // ex) #home → home
-      if (hash && document.getElementById(hash)) {
-        showSection(hash);
-      } else {
-        showSection('home');
-      }
-    }
+  window.onload = () => {
+    // 항상 홈 섹션부터 시작
+    showSection('home');
+  };
+
     const hash = window.location.hash.substring(1);
     function showDistrict(id) {
       // 모든 탭 숨김
@@ -179,8 +176,10 @@
 </head>
 <body>
   <header>
-    <h1><small>서울형 정비지원계획</small><br><strong>신속통합기획 아카이브</strong></h1>
-    <p>서울의 오늘과 내일을 기록합니다</p>
+    <h1 onclick="showSection('home')" style="cursor: pointer;">
+      <small>서울형 정비지원계획</small><br>
+      <strong>신속통합기획 아카이브</strong>
+    </h1>    <p>서울의 오늘과 내일을 기록합니다</p>
   </header>
 
   <nav class="navbar navbar-expand-lg navbar-light px-3">
@@ -191,8 +190,8 @@
 
       <div class="collapse navbar-collapse" id="navbarNav">
         <div class="navbar-nav">
-          <a class="nav-link" href="#home" onclick="showSection('home')">Home</a>
-          <a class="nav-link" href="#about" onclick="showSection('about')">정책 소개</a>
+          <a class="nav-link" href="#" onclick="showSection('home')">Home</a>
+          <a class="nav-link" href="#" onclick="showSection('about')">정책 소개</a>
           <div class="nav-item dropdown position-relative">
             <a class="nav-link dropdown-toggle" href="#" id="regionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               대상지별 기획내용
@@ -206,8 +205,8 @@
               <li><a class="dropdown-item" href="#region-southeast" onclick="showSection('region-southeast')">동남권</a></li>
             </ul>
           </div>
-          <a class="nav-link" href="#map" onclick="showSection('map')">지도로 보기</a>
-          <a class="nav-link" href="#related" onclick="showSection('related')">참가자</a>
+          <a class="nav-link" href="#" onclick="showSection('map')">지도로 보기</a>
+          <a class="nav-link" href="#" onclick="showSection('related')">참가자</a>
         </div>
         <form class="d-flex search-bar ms-auto">
           <input type="search" placeholder="검색어 입력" aria-label="Search">
