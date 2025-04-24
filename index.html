@@ -43,6 +43,10 @@
       // 페이지 최상단으로 이동
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    fetch("about.html")
+  .then(res => res.text())
+  .then(data => document.getElementById("about").innerHTML = data);
   </script>
 
 </head>
@@ -151,35 +155,13 @@
           <p>신속통합기획은 재건축 재개발 활성화를 위해 서울시가 도입한 도시•주택정책이 다. 정비계획(도시계획) 단계에서 서울시 지원을 통해 도시건축 교통환경 분야 를 통합한 계획이 선제적으로 이루어진다. 사업지 별로 어떻게 해야 개발이 실현 될수 있는지, 어떻게 하면 더 좋은 도시공간으로 바뀔수 있는지 다양한 이해당사 자들과 함께 소통하며 서로의 의견을 반영하여 계획을 만든다. 이러한 과정을 통 해 만들어진 신속통합기획 가이드라인은 빠른 정비사업을 위한 지름길이다. 사 업자는 가이드라인에 맞춰 개발계획을 신속히 수립 할수 있고, 서울시는 복잡한 인허가 절차가 빠르게 진행되도록 지원한다.</p>
 신속통합기획은 사업 실현이 가능한 '공공성'을 제시한다. 과거 정비계획은 경직 된 도시계획 규제로 공공성을 우선시하였다. 아파트의 최고 층수는 정해져 있었 고, 용적률로 대변되는 용도지역은 변화의 여지가 없었다. 신속통합기획에서는 사업실현을 우선 고려하여 공공성을 제시한다. 획일적인 높이 규제는 더 유연하 게, 경직된 용도지역은 입지와 공간수요에 맞게 변경한다. 과거의 도시규제에서 탈피, 지역맞춤형 도시계획 지원을 통해 도시공간의 변화를 이루어내는 것이다.</p>
   <p>신속통합기획은 서울시 정비사업의 역사를 새로 쓰고 있다. 24년 11월 현재 정 비사업 추진구역 138개소에서 신속통합기획을 통한 계획지원이 이루어지고 있 으며, 88개소(약 16만호)는 신속통합기획이 완료되었다. 또한 기획 완료된 사업 지중 27개 사업지에 대한 정비계획 결정고시가 완료 되어, 사업시행인가 절차를 밟 고 있다. 수년간 서울시 내 신규 재개발 정비구역 지정이 거의 이루어지지 않았다는 점을 감안하면, 신속통합기획 정책 도입 3년의 성과는 분명히 조명 되어야 한다.</p>
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>관련 법령</th>
-                <th>주요 내용</th>
-                <th>비고</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>도시 및 주거환경정비법</td>
-                <td>정비구역 지정, 주민동의율, 사업시행 인가</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>건축법</td>
-                <td>용적률 완화, 건축 기준의 유연한 적용</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>서울시 조례</td>
-                <td>정비계획 수립 및 절차 간소화 조항</td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
+
         </section>
       </div>
     </div>
+
+
+
     <div class="section-divider"></div>
 
 
@@ -197,31 +179,179 @@
 <!-- 📌 우측 콘텐츠 -->
 <div class="col-md-9">
   <section id="timeline" class="mb-4">
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-year">2021</div>
-        <div class="timeline-content">신속통합기획 도입 (도시주거환경정비 기본계획 변경)</div>
+    <div class="timeline-wrapper">
+
+      <div class="timeline-year-block">
+        <div class="year">2019</div>
+        <ul class="events">
+          <li><strong>5월</strong> - 도시건축혁신 시범사업 추진(정비사업 사전 공공기획 도입)
+
+        </ul>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-year">2022</div>
-        <div class="timeline-content">신속통합기획 전담조직 신설</div>
+
+
+            <div class="timeline-year-block">
+              <div class="year">2020</div>
+              <ul class="events">
+                <li><strong>6월</strong> - 도시건축 혁신 시범사업 완료</li>
+
+              </ul>
+            </div>
+
+
+                        <div class="timeline-year-block">
+                          <div class="year">2021</div>
+                          <ul class="events">
+                            <li><strong>9월</strong> - 신속통합기획 추진방안</li>
+
+                          </ul>
+                        </div>
+
+      <div class="timeline-year-block">
+        <div class="year">2022</div>
+        <ul class="events">
+          <li><strong>1월</strong> - 전담조직 신설</li>
+          <li><strong>8월</strong> - 신속기획 50개소 달성</li>
+        </ul>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-year">2023</div>
-        <div class="timeline-content">패스트트랙(Fast-Track) 도입</div>
+
+      <div class="timeline-year-block">
+        <div class="year">2023</div>
+        <ul class="events">
+          <li><strong>4월</strong> - 패스트트랙(Fast-Track) 제도 도입</li>
+          <li><strong>12월</strong> - 부문별 기획가 참여 확대</li>
+        </ul>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-year">2024</div>
-        <div class="timeline-content">신속통합기획 전시 개최</div>
+
+      <div class="timeline-year-block">
+        <div class="year">2024</div>
+        <ul class="events">
+          <li><strong>9월</strong> -  「2030 서울시 도시·주거환경정비기본계획」 변경 </li>
+
+           <li><strong>11월</strong> - 신속통합기획 전시회 개최</li>
+        </ul>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-year">2025</div>
-        <div class="timeline-content">도시정비형까지 신속통합기획 확대 적용</div>
+
+      <div class="timeline-year-block">
+        <div class="year">2025</div>
+        <ul class="events">
+          <li><strong>4월</strong> -  도시정비형 재개발 사업에 대한 신속통합기획 도입</li>
+
+           <li><strong>11월</strong> - 신속통합기획 전시회 개최</li>
+        </ul>
       </div>
+      <!-- 추가 연도 블록도 같은 형식으로 -->
+
     </div>
   </section>
 </div>
 </div>
+
+<div class="section-divider"></div>
+
+
+
+
+<div class="row">
+<!-- 📌 좌측 세로 네비게이션 (1/4) -->
+
+
+
+<div class="col-md-3 sidebar-border pe-3">
+<nav class="nav flex-column pt-0 ps-3">
+  <h4>관련 법령 및 기준</h4>
+  <!-- 향후 추가 항목 -->
+</nav>
+</div>
+<!-- 📌 우측 콘텐츠 -->
+<div class="col-md-9">
+  <table class="law-table">
+     <thead>
+       <tr>
+         <th>관련 법령</th>
+         <th>주요 내용</th>
+         <th>비고</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+         <td>
+           <strong>도시 및 주거환경정비법</strong><br>
+           <span class="clause">제13조의2(정비구역의 지정을 위한 정비계획의 입안 요청)</span>
+         </td>
+         <td>정비구역 지정권자는 토지이용, 주택건설 및 기반시섷의 설치 등에 관한 기본 방향을 입안권자에게 제시</td>
+         <td>2023.07.</td>
+       </tr>
+       <tr>
+         <td>
+           <strong>도시주거환경정비 기본계획</strong><br>
+           <span class="clause">8.2 공공의 역할</span>
+         </td>
+         <td>정비지원계획(신속통합기획)이란 정비계획 수립 단계에서 서울시가 공공성과 사업성의
+균형을 이룬 가이드라인을 제시하고, 신속한 사업추진을 지원하는 공공지원계획으로 시장
+이 별도 방침으로 정하여 운영할 수 있음</td>
+         <td>2021.9</td>
+       </tr>
+
+     </tbody>
+   </table>
+</div>
+
+  </div>
+<div class="section-divider"></div>
+
+
+
+<div class="row">
+<!-- 📌 좌측 세로 네비게이션 (1/4) -->
+
+
+
+<div class="col-md-3 sidebar-border pe-3">
+<nav class="nav flex-column pt-0 ps-3">
+  <h4>신속통합기획 추진 절차</h4>
+  <!-- 향후 추가 항목 -->
+</nav>
+</div>
+<!-- 📌 우측 콘텐츠 -->
+<div class="col-md-9">
+  <div class="step">
+    <div class="step-title">1. 신속통합기획 선정</div>
+    <ul>
+      <li>주민 신청 접수 → 자치구</li>
+      <li>자치구 검토 및 서울시 추천</li>
+      <li>선정위원회 심사 및 발표 (시 조택심)</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <div class="step-title">2. 신속통합기획 수립</div>
+    <ul>
+      <li>용역 방침 수립 및 입찰공고</li>
+      <li>계약 및 착수</li>
+      <li>신속통합기획(안) 마련 – MP 및 자문회의</li>
+      <li>주민 간담회 / 설명회</li>
+      <li>신속통합기획 완료 (시)</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <div class="step-title">3. 입안 및 구역 지정</div>
+    <ul>
+      <li>신동 반영 정비계획(안) 수립</li>
+      <li>추정분담금 검증의</li>
+      <li>동의서 양식 배부</li>
+      <li>공람공고, 관계부처 협의</li>
+      <li>구의회 의견청취 → 도계위 심의 및 결정고시</li>
+    </ul>
+  </div>
+</div>
+
+  </div>
+<div class="section-divider"></div>
+
+
+
   </div>
 
     <div id="map" class="section container">

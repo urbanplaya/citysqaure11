@@ -38,6 +38,23 @@
   header h1 {
     font-size: 1.2rem;    /* 부제목도 함께 조절 */
   }
+  h4 {
+    text-align: left !important;
+    margin-left: 0 !important;
+    padding-left: 1rem;
+  }
+  .step {
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .step-title {
+    font-size: 1.1rem;
+  }
+
+  .step ul li {
+    font-size: 0.95rem;
+  }
 }
   .navbar .container-fluid {
     max-width: 1200px;
@@ -45,7 +62,7 @@
   }
   nav.navbar {
     position: fixed;
-    top: 110px; /* 헤더 높이에 따라 조정 */
+    top: 130px; /* 헤더 높이에 따라 조정 */
     width: 100%;
     z-index: 1050; /* ✅ header보다 위에 보이도록 우선순위 조정 */
     background-color: #fff;
@@ -69,7 +86,7 @@
   .section.container {
     max-width: 1000px;      /* ✅ 본문 최대 너비 제한 */
     margin: 0 auto;        /* ✅ 가운데 정렬 */
-    padding-top: 180px; /* 200 → 250으로 조정 (header + navbar의 총 높이 보정) */
+    padding-top: 200px; /* 200 → 250으로 조정 (header + navbar의 총 높이 보정) */
   }
 
   .section-divider {
@@ -92,6 +109,16 @@
   border-bottom: 2px solid #000;
 }
   h3, h4 { font-weight: 700; margin-top: 1rem; }
+  h4 {
+    text-align: left !important;
+  margin-left: 0 !important;
+
+  }
+  h4 {
+    align-self: flex-start;
+    text-align: left;
+  }
+
   ul li::marker { content: '• '; color: #555; font-size: 1.2rem; }
   img, iframe, svg, object { max-width: 100%; margin: 1rem 0; border: 1px solid #ccc; }
   .search-bar { margin-left: auto; }
@@ -109,35 +136,54 @@
 .svg-links a:nth-child(8) { background-color: #EBEBEB; }
 .svg-links a:nth-child(9) { background-color: #EBEBEB; }
 .svg-links a:nth-child(10) { background-color: #EBEBEB; }
-.timeline {
-  border-left: 3px solid #cccccc;
-  margin-left: 1rem;
+
+
+.timeline-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.timeline-year-block {
+  margin-bottom: 2.5rem;
   padding-left: 1rem;
+  border-left: 3px solid #888;
   position: relative;
 }
-.timeline::before {
-  content: "";
+
+.timeline-year-block::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background-color: #444;
+  border-radius: 50%;
   position: absolute;
   left: -6px;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: #cccccc;
+  top: 6px;
 }
-.timeline-item {
-  position: relative;
-  margin-bottom: 2rem;
+
+.year {
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
 }
-.timeline-year {
-  font-weight: bold;
-  color: #000000;
-  margin-bottom: 0.25rem;
+
+.events {
+  list-style: none;
+  padding-left: 0;
 }
-.timeline-content {
-  background: #fffff;
-  padding: 0.75rem 1rem;
-  border-radius: 6px;
-  border: 1px solid #ddd;
+
+.events li {
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  border-left: 2px solid #ccc;
+  font-size: 0.95rem;
+}
+
+.events li strong {
+  display: inline-block;
+  width: 50px;
+  color: #444;
 }
 .sidebar-border h4 {
   margin-top: 0;
@@ -280,5 +326,78 @@
   height: 100%;
   border: none;
 }
+.parent-flex-container {
+  align-items: flex-start;
+}
 
+.law-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.law-table th,
+.law-table td {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  vertical-align: top;
+  text-align: left;
+}
+
+.law-table th {
+  background-color: #f8f8f8;
+  font-weight: bold;
+}
+
+.clause {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: #666;
+  font-style: italic;
+}
+
+.procedure-flow {
+  margin-top: 4rem;
+  padding: 2rem 1rem;
+  border-top: 2px solid #ccc;
+}
+
+.procedure-flow h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.step {
+  margin-bottom: 3rem;
+  border-left: 4px solid #ccc;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.step::before {
+  content: '●';
+  color: #EE220D;
+  font-size: 1rem;
+  position: absolute;
+  left: -1.2rem;   /* 아이콘이 너무 가깝지 않도록 여백 확보 */
+  top: 0.7rem;     /* 텍스트와 수평 정렬 */
+}
+
+.step-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+.step ul {
+  padding-left: 1rem;
+  list-style-type: disc;
+  color: #444;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
   </style>
