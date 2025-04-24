@@ -14,7 +14,24 @@
  }
   header { padding: 2rem 1rem; text-align: center; border-bottom: 1px solid #ddd; }
   header h1 { font-weight: 200; font-size: 2rem; }
-  header h1 strong { font-weight: 800; font-size: 2.6rem; display: block; margin-top: 0.2rem; }
+  header h1 strong {
+  font-weight: 800;
+  font-size: 2.2rem;     /* ✅ 조금 줄임 */
+  display: block;
+  margin-top: 0.2rem;
+  word-break: keep-all;  /* ✅ 단어 단위 줄바꿈 */
+  line-height: 1.3;
+}
+
+@media (max-width: 576px) {
+  header h1 strong {
+    font-size: 1.6rem;    /* ✅ 모바일에서 폰트 크기 더 줄이기 */
+  }
+
+  header h1 {
+    font-size: 1.2rem;    /* 부제목도 함께 조절 */
+  }
+}
   nav.navbar { background-color: #fff; border-bottom: 3px solid #000; }
   .navbar .container-fluid { max-width: 1200px; margin: 0 auto; }
   nav.navbar .nav-link { color: #000 !important; font-weight: 700; text-transform: uppercase; margin: 0 0.5rem; }
