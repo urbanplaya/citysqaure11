@@ -8,7 +8,9 @@
   <link rel="stylesheet" href="style.css">
 
   <script>
-
+  document.addEventListener("DOMContentLoaded", function() {
+    showSection('home');
+  });
   window.onload = () => {
     // 항상 홈 섹션부터 시작
     showSection('home');
@@ -44,18 +46,24 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    fetch("about.html")
+/*    fetch("about.html")
   .then(res => res.text())
-  .then(data => document.getElementById("about").innerHTML = data);
+  .then(data => document.getElementById("about").innerHTML = data); */
   </script>
 
 </head>
 <body>
+
+
   <header>
+    <div class="container">
+
     <h1 onclick="showSection('home')" style="cursor: pointer;">
       <small>서울의 오늘과 내일을 기록합니다.</small><br>
       <strong>신속통합기획 아카이브</strong>
     </h1>
+  </div>
+
   </header>
 
   <nav class="navbar navbar-expand-lg navbar-light px-3">
