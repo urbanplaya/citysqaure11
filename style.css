@@ -10,8 +10,8 @@
     padding: 2rem 1rem;
     text-align: center;
     border-bottom: 1px solid #ddd;
-
-    position: fixed;
+    /*  position: relative;*/
+   position: fixed;
  top: 0;
  width: 100%;
  z-index: 1040;
@@ -59,6 +59,7 @@
   .navbar .container-fluid {
     max-width: 1200px;
     margin: 0 auto;
+     padding: 0 1rem;
   }
   nav.navbar {
     position: fixed;
