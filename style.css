@@ -1,0 +1,284 @@
+
+  <style>
+  body { font-family: 'Segoe UI', sans-serif; background-color: #fff; color: #333;
+
+  line-height: 1.75;
+   font-size: 1.05rem;
+   letter-spacing: -0.2px;
+ }
+  header {
+    padding: 2rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+
+    position: fixed;
+ top: 0;
+ width: 100%;
+ z-index: 1040;
+ background-color: #fff;
+ border-bottom: 1px solid #ddd;
+   }
+
+  header h1 { font-weight: 200; font-size: 2rem; }
+
+  header h1 strong {
+  font-weight: 800;
+  font-size: 2.2rem;     /* ✅ 조금 줄임 */
+  display: block;
+  margin-top: 0.2rem;
+  word-break: keep-all;  /* ✅ 단어 단위 줄바꿈 */
+  line-height: 1.3;
+}
+
+@media (max-width: 576px) {
+  header h1 strong {
+    font-size: 1.6rem;    /* ✅ 모바일에서 폰트 크기 더 줄이기 */
+  }
+
+  header h1 {
+    font-size: 1.2rem;    /* 부제목도 함께 조절 */
+  }
+}
+  .navbar .container-fluid {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  nav.navbar {
+    position: fixed;
+    top: 110px; /* 헤더 높이에 따라 조정 */
+    width: 100%;
+    z-index: 1050; /* ✅ header보다 위에 보이도록 우선순위 조정 */
+    background-color: #fff;
+    border-bottom: 3px solid #000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* ✅ 시각적으로 더 부각 */
+
+  }
+  .nav-link { color: #000 !important; font-weight: 700; text-transform: uppercase; margin: 0 0.5rem; }
+  nav.navbar .nav-link:hover { color: #555 !important; }
+  .section {
+    padding-top: 180px; /* 200 → 250으로 조정 (header + navbar의 총 높이 보정) */
+    display: none;
+
+  }
+  .section.active {
+    display: block;
+    display: block;
+
+  }
+
+  .section.container {
+    max-width: 1000px;      /* ✅ 본문 최대 너비 제한 */
+    margin: 0 auto;        /* ✅ 가운데 정렬 */
+    padding-top: 180px; /* 200 → 250으로 조정 (header + navbar의 총 높이 보정) */
+  }
+
+  .section-divider {
+    border-top: 1px solid #ccc;
+    margin: 2rem 0;
+  }
+
+  .external-links a { display: block; margin: 0.5rem 0; text-decoration: underline; font-weight: 500; }
+  footer { text-align: center; padding: 2rem; font-size: 0.85rem; color: #999; border-top: 1px solid #ddd; background-color: #f8f8f8; }
+  footer .meta { margin-top: 1rem; font-size: 0.8rem; color: #666; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  th, td { border: 1px solid #ccc; padding: 0.75rem; text-align: left; }
+
+  h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 2rem 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #000;
+}
+  h3, h4 { font-weight: 700; margin-top: 1rem; }
+  ul li::marker { content: '• '; color: #555; font-size: 1.2rem; }
+  img, iframe, svg, object { max-width: 100%; margin: 1rem 0; border: 1px solid #ccc; }
+  .search-bar { margin-left: auto; }
+  .search-bar input { border-radius: 20px; padding: 0.4rem 1rem; border: 1px solid #ccc; }
+  .svg-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; margin: 3rem 0; }
+  .svg-links a { display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; text-decoration: none; border-radius: 50%; color: white; font-weight: bold; font-size: 1rem; transition: background-color 0.3s; }
+  .svg-links a:nth-child(1) { background-color: #5EB391; }
+  .svg-links a:nth-child(2) { background-color: #90CBF1; }
+  .svg-links a:nth-child(3) { background-color: #F9B900; }
+  .svg-links a:nth-child(4) { background-color: #D5D5D5; }
+
+  .svg-links a:nth-child(5) { background-color: #73FDFF; }
+  .svg-links a:nth-child(6) { background-color: #5E5E5E; }
+  .svg-links a:nth-child(7) { background-color: #EBEBEB; }
+.svg-links a:nth-child(8) { background-color: #EBEBEB; }
+.svg-links a:nth-child(9) { background-color: #EBEBEB; }
+.svg-links a:nth-child(10) { background-color: #EBEBEB; }
+.timeline {
+  border-left: 3px solid #cccccc;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  position: relative;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #cccccc;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.timeline-year {
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 0.25rem;
+}
+.timeline-content {
+  background: #fffff;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+.sidebar-border h4 {
+  margin-top: 0;
+}
+
+
+.person-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.name-line {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.name-line .name {
+  font-weight: 700;
+  color: #222;
+}
+
+.name-line .affiliation {
+  font-style: italic;
+  color: #888;
+  margin-left: 0.5rem;
+}
+
+.project-list {
+  padding-left: 1.2rem;
+  margin: 0.5rem 0 0 0;
+  color: #444;
+}
+
+.project-list li {
+  line-height: 1.6;
+}
+.section-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.75rem;
+  margin-bottom: 0.2rem;
+  border-bottom: 2px solid #5EB391;
+  padding-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-style: italic;
+  font-weight: 300;
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+}
+
+
+.layout-section {
+  margin-top: 3rem;
+  padding: 2rem 1rem;
+}
+
+.layout-header h3 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 0.3rem;
+}
+
+.layout-subtitle {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.layout-image img {
+  width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  margin-bottom: 1.5rem;
+}
+
+.layout-description p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 0rem;
+}
+
+.layout-features h4 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #444;
+  margin-bottom: 0.3rem;
+}
+
+.layout-features p {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+#legal-about, #legal-related,#legal-workshop,#legal-exhibition {
+  margin-bottom: 2rem;
+}
+
+
+.external-link {
+  display: inline-block;
+  color: #0066cc;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px dashed #ccc;
+  padding: 0.3rem 0;
+}
+
+.external-link:hover {
+  color: #003366;
+  border-bottom: 1px solid #003366;
+  text-decoration: underline;
+}
+
+.external-link::after {
+  content: " ↗";
+  font-size: 0.9em;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 비율 */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  margin: 2rem auto;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+  </style>
