@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+  <title>신속통합기획 서울 아카이브</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+  body { font-family: 'Segoe UI', sans-serif; background-color: #fff; color: #333;
+
+  line-height: 1.75;
+   font-size: 1.05rem;
+   letter-spacing: -0.2px;
+ }
+  header { padding: 2rem 1rem; text-align: center; border-bottom: 1px solid #ddd; }
+  header h1 { font-weight: 200; font-size: 2rem; }
+  header h1 strong { font-weight: 800; font-size: 2.6rem; display: block; margin-top: 0.2rem; }
+  nav.navbar { background-color: #fff; border-bottom: 3px solid #000; }
+  .navbar .container-fluid { max-width: 1200px; margin: 0 auto; }
+  nav.navbar .nav-link { color: #000 !important; font-weight: 700; text-transform: uppercase; margin: 0 0.5rem; }
+  nav.navbar .nav-link:hover { color: #555 !important; }
+  .section { padding: 3rem 1rem; display: none; }
+  .section.active { display: block; }
+
+  .section.container {
+    max-width: 1000px;      /* ✅ 본문 최대 너비 제한 */
+    margin: 0 auto;        /* ✅ 가운데 정렬 */
+    padding: 3rem 1rem;    /* ✅ 기존 padding 유지 */
+  }
+
+  .external-links a { display: block; margin: 0.5rem 0; text-decoration: underline; font-weight: 500; }
+  footer { text-align: center; padding: 2rem; font-size: 0.85rem; color: #999; border-top: 1px solid #ddd; background-color: #f8f8f8; }
+  footer .meta { margin-top: 1rem; font-size: 0.8rem; color: #666; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  th, td { border: 1px solid #ccc; padding: 0.75rem; text-align: left; }
+
+  h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 2rem 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #000;
+}
+  h3, h4 { font-weight: 700; margin-top: 2rem; }
+  ul li::marker { content: '• '; color: #555; font-size: 1.2rem; }
+  img, iframe, svg, object { max-width: 100%; margin: 1rem 0; border: 1px solid #ccc; }
+  .search-bar { margin-left: auto; }
+  .search-bar input { border-radius: 20px; padding: 0.4rem 1rem; border: 1px solid #ccc; }
+  .svg-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; margin: 3rem 0; }
+  .svg-links a { display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; text-decoration: none; border-radius: 50%; color: white; font-weight: bold; font-size: 1rem; transition: background-color 0.3s; }
+  .svg-links a:nth-child(1) { background-color: #5EB391; }
+  .svg-links a:nth-child(2) { background-color: #90CBF1; }
+  .svg-links a:nth-child(3) { background-color: #F9B900; }
+  .svg-links a:nth-child(4) { background-color: #D5D5D5; }
+
+.timeline {
+  border-left: 3px solid #cccccc;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  position: relative;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #cccccc;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.timeline-year {
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 0.25rem;
+}
+.timeline-content {
+  background: #fffff;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+.sidebar-border h4 {
+  margin-top: 0;
+}
+
+
+.person-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.name-line {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.name-line .name {
+  font-weight: 700;
+  color: #222;
+}
+
+.name-line .affiliation {
+  font-style: italic;
+  color: #888;
+  margin-left: 0.5rem;
+}
+
+.project-list {
+  padding-left: 1.2rem;
+  margin: 0.5rem 0 0 0;
+  color: #444;
+}
+
+.project-list li {
+  line-height: 1.6;
+}
+  </style>
+  <script>
+
+    window.onload = () => {
+      const hash = window.location.hash.substring(1); // ex) #home → home
+      if (hash && document.getElementById(hash)) {
+        showSection(hash);
+      } else {
+        showSection('home');
+      }
+    }
+    const hash = window.location.hash.substring(1);
+    function showDistrict(id) {
+      // 모든 탭 숨김
+      document.querySelectorAll('.district-tab').forEach(tab => tab.style.display = 'none');
+      // 해당 탭만 표시
+      document.getElementById(id).style.display = 'block';
+
+      // 탭 활성화 표시 전환
+      document.querySelectorAll('#northTabs .nav-link').forEach(link => link.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+    function showSection(id) {
+      // 모든 섹션 숨기기
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+
+      // 해당 섹션 표시
+      const target = document.getElementById(id);
+      if (target) {
+        target.classList.add('active');
+
+        // 👇 스크롤 이동 제거됨
+        // window.scrollTo({ top: ..., behavior: 'smooth' });
+
+        // 👉 URL hash 갱신
+        history.replaceState(null, null, '#' + id);
+      }
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1><small>서울형 정비지원계획</small><br><strong>신속통합기획 아카이브</strong></h1>
+    <p>서울시 정비사업 대표 지원정책, 신속통합기획을 기록합니다.</p>
+  </header>
+
+  <nav class="navbar navbar-expand-lg navbar-light px-3">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="navbar-nav">
+          <a class="nav-link" href="#home" onclick="showSection('home')">Home</a>
+          <a class="nav-link" href="#about" onclick="showSection('about')">정책 소개</a>
+          <div class="nav-item dropdown position-relative">
+            <a class="nav-link dropdown-toggle" href="#" id="regionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              대상지별 기획내용
+            </a>
+            <ul class="dropdown-menu" style="left: 0; top: 100%;" aria-labelledby="regionDropdown">
+              <li><a class="dropdown-item" href="#regions" onclick="showSection('regions')">전체</a></li>
+              <li><a class="dropdown-item" href="#region-north" onclick="showSection('region-north')">동북권</a></li>
+              <li><a class="dropdown-item" href="#region-center" onclick="showSection('region-center')">도심권</a></li>
+              <li><a class="dropdown-item" href="#region-northwest" onclick="showSection('region-northwest')">서북권</a></li>
+              <li><a class="dropdown-item" href="#region-southwest" onclick="showSection('region-southwest')">서남권</a></li>
+              <li><a class="dropdown-item" href="#region-southeast" onclick="showSection('region-southeast')">동남권</a></li>
+            </ul>
+          </div>
+          <a class="nav-link" href="#map" onclick="showSection('map')">지도로 보기</a>
+          <a class="nav-link" href="#related" onclick="showSection('related')">참가자</a>
+        </div>
+        <form class="d-flex search-bar ms-auto">
+          <input type="search" placeholder="검색어 입력" aria-label="Search">
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <div id="home" class="section container">
+    <h2>홈</h2>
+    <p>신속통합기획과 관련된 주요 메뉴로 바로 연결해보세요.</p>
+    <div class="svg-links">
+      <a href="#" onclick="showSection('about')">정책 소개</a>
+      <a href="#" onclick="showSection('regions')">대상지별 기획</a>
+      <a href="#" onclick="showSection('map')">지도로 보기</a>
+      <a href="#" onclick="showSection('related')">참가자</a>
+    </div>
+
+
+    <h3>📌 최신 뉴스</h3>
+    <ul>
+      <li>2025.04.20 - 서울시, 신속통합기획 대상지 15곳 추가 선정</li>
+      <li>2025.04.12 - 국토부와 공동 정책세미나 개최: 공공성 확대 방안 논의</li>
+      <li>2025.03.30 - 주민참여형 정비기획 공모전 성황리 종료</li>
+    </ul>
+  </div>
+  <div id="about" class="section container">
+    <h2>정책 소개</h2>
+    <div class="row">
+      <!-- 📌 좌측 세로 네비게이션 (1/4) -->
+
+        <div class="col-md-3 sidebar-border pe-3">
+          <nav class="nav flex-column pt-0 ps-3">
+            <h4>신속통합기획 이란?</h4>
+            <!-- 향후 추가 항목 -->
+          </nav>
+        </div>
+
+      <!-- 📌 우측 콘텐츠 (3/4) -->
+      <div class="col-md-9">
+        <section id="legal" class="mb-4">
+          <p>신속통합기획은 재건축 재개발 활성화를 위해 서울시가 도입한 도시•주택정책이 다. 정비계획(도시계획) 단계에서 서울시 지원을 통해 도시건축 교통환경 분야 를 통합한 계획이 선제적으로 이루어진다. 사업지 별로 어떻게 해야 개발이 실현 될수 있는지, 어떻게 하면 더 좋은 도시공간으로 바뀔수 있는지 다양한 이해당사 자들과 함께 소통하며 서로의 의견을 반영하여 계획을 만든다. 이러한 과정을 통 해 만들어진 신속통합기획 가이드라인은 빠른 정비사업을 위한 지름길이다. 사 업자는 가이드라인에 맞춰 개발계획을 신속히 수립 할수 있고, 서울시는 복잡한 인허가 절차가 빠르게 진행되도록 지원한다.</p>
+신속통합기획은 사업 실현이 가능한 '공공성'을 제시한다. 과거 정비계획은 경직 된 도시계획 규제로 공공성을 우선시하였다. 아파트의 최고 층수는 정해져 있었 고, 용적률로 대변되는 용도지역은 변화의 여지가 없었다. 신속통합기획에서는 사업실현을 우선 고려하여 공공성을 제시한다. 획일적인 높이 규제는 더 유연하 게, 경직된 용도지역은 입지와 공간수요에 맞게 변경한다. 과거의 도시규제에서 탈피, 지역맞춤형 도시계획 지원을 통해 도시공간의 변화를 이루어내는 것이다.</p>
+  <p>신속통합기획은 서울시 정비사업의 역사를 새로 쓰고 있다. 24년 11월 현재 정 비사업 추진구역 138개소에서 신속통합기획을 통한 계획지원이 이루어지고 있 으며, 88개소(약 16만호)는 신속통합기획이 완료되었다. 또한 기획 완료된 사업 지중 27개 사업지에 대한 정비계획 결정고시가 완료 되어, 사업시행인가 절차를 밟 고 있다. 수년간 서울시 내 신규 재개발 정비구역 지정이 거의 이루어지지 않았다는 점을 감안하면, 신속통합기획 정책 도입 3년의 성과는 분명히 조명 되어야 한다.</p>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>관련 법령</th>
+                <th>주요 내용</th>
+                <th>비고</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>도시 및 주거환경정비법</td>
+                <td>정비구역 지정, 주민동의율, 사업시행 인가</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>건축법</td>
+                <td>용적률 완화, 건축 기준의 유연한 적용</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>서울시 조례</td>
+                <td>정비계획 수립 및 절차 간소화 조항</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+
+    <div class="row">
+<!-- 📌 좌측 세로 네비게이션 (1/4) -->
+
+  <div class="col-md-3 sidebar-border pe-3">
+    <nav class="nav flex-column pt-0 ps-3">
+      <h4>추진 경위</h4>
+      <!-- 향후 추가 항목 -->
+    </nav>
+  </div>
+<!-- 📌 우측 콘텐츠 -->
+<div class="col-md-9">
+  <section id="timeline" class="mb-4">
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">2021</div>
+        <div class="timeline-content">신속통합기획 도입 (도시주거환경정비 기본계획 변경)</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2022</div>
+        <div class="timeline-content">신속통합기획 전담조직 신설</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2023</div>
+        <div class="timeline-content">패스트트랙(Fast-Track) 도입</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2024</div>
+        <div class="timeline-content">신속통합기획 전시 개최</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2025</div>
+        <div class="timeline-content">도시정비형까지 신속통합기획 확대 적용</div>
+      </div>
+    </div>
+  </section>
+</div>
+</div>
+  </div>
+
+    <div id="map" class="section container">
+      <h2>지도로 보기</h2>
+      <iframe src="https://map.vworld.kr/map/scripts/apps/openapi/openApiMap.do" width="100%" height="600" allowfullscreen></iframe>
+      <p>※ VWorld 제공 항공/위성 지도 기반</p>
+    </div>
+
+      <div id="regions" class="section container">
+        <h2>서울시 전체 </h2>
+
+        <p>※ VWorld 제공 항공/위성 지도 기반</p>
+
+
+      </div>
+
+      <div id="related" class="section container">
+        <h2>참가자</h2>
+
+        <div class="row">
+          <!-- 📌 좌측 세로 네비게이션 (1/4) -->
+
+            <div class="col-md-3 sidebar-border pe-3">
+              <nav class="nav flex-column pt-0 ps-3">
+                <h4>신속통합기획가</h4>
+                <!-- 향후 추가 항목 -->
+              </nav>
+            </div>
+
+          <!-- 📌 우측 콘텐츠 (3/4) -->
+          <div class="col-md-9">
+
+            <section id="legal" class="mb-4">
+      <div class="person-list">
+
+
+
+        <div class="person">
+          <p class="name-line">
+            <strong class="name">이창무</strong>
+            <span class="affiliation">한양대학교 교수</span>
+          </p>
+          <ul class="project-list">
+            <li>창신동 23, 숭인동 56 재개발 신속통합기획 참여</li>
+
+
+          </ul>
+        </div>
+
+                <div class="person">
+                  <p class="name-line">
+                    <strong class="name">윤혁경</strong>
+                    <span class="affiliation">전. ANU디자인그룹</span>
+                  </p>
+                  <ul class="project-list">
+                    <li>창신동 23, 숭인동 56 재개발 신속통합기획 참여</li>
+                    <li>여의도시범아파트, 한양 재건축 신속통합기획 참여</li>
+
+                  </ul>
+                </div>
+
+
+        <div class="person">
+          <p class="name-line">
+            <strong class="name">강인호</strong>
+            <span class="affiliation">한남대학교 교수</span>
+          </p>
+          <ul class="project-list">
+            <li>목동6단지 재건축 신속통합기획 참여</li>
+          </ul>
+        </div>
+
+        <div class="person">
+          <p class="name-line">
+            <strong class="name">김용호</strong>
+            <span class="affiliation">제일엔지니어링</span>
+          </p>
+          <ul class="project-list">
+            <li>신사동 200, 237 일대 재개발 신속통합기획 참여</li>
+          </ul>
+        </div>
+
+
+        <div class="person">
+          <p class="name-line">
+            <strong class="name">남진</strong>
+            <span class="affiliation">서울시립대학교 교수</span>
+          </p>
+          <ul class="project-list">
+            <li>미아동 791-2883일대 신속통합기획 참여</li>
+          </ul>
+        </div>
+
+
+        <div class="person">
+          <p class="name-line">
+            <strong class="name">박동주</strong>
+            <span class="affiliation">디자인랩스튜디오</span>
+          </p>
+          <ul class="project-list">
+            <li>목동6단지 재건축 신속통합기획 참여</li>
+          </ul>
+        </div>
+
+        <div class="person">
+          <p class="name-line">
+            <strong class="name">문석훈</strong>
+            <span class="affiliation">에이비라인</span>
+          </p>
+          <ul class="project-list">
+            <li>신사동 200, 237 일대 재개발 신속통합기획 참여</li>
+          </ul>
+        </div>
+
+        <div class="person">
+          <p class="name-line">
+            <strong class="name">구자훈</strong>
+            <span class="affiliation">한양대학교 교수</span>
+          </p>
+          <ul class="project-list">
+            <li>여의도시범아파트 한양 재건축 신속통합기획 참여</li>
+          </ul>
+        </div>
+
+        <div class="person">
+          <p class="name-line">
+            <strong class="name">김호정</strong>
+            <span class="affiliation">단국대학교 교수</span>
+          </p>
+          <ul class="project-list">
+            <li>사당17구역 재개발 신속통합기획 참여</li>
+          </ul>
+        </div>
+
+        <div class="person">
+          <p class="name-line">
+            <strong class="name">유재득</strong>
+            <span class="affiliation">일로건축 대표</span>
+          </p>
+          <ul class="project-list">
+            <li>고덕현대 아파트 재건축 신속통합기획 참여</li>
+            <li>송파 한양2차 아파트 재건축 신속통합기획 참여</li>
+          </ul>
+        </div>
+
+        <div class="person">
+          <p class="name-line">
+            <strong class="name">양진석</strong>
+            <span class="affiliation">와이그룹</span>
+          </p>
+          <ul class="project-list">
+            <li>불광8구역 재개발 신속통합기획 참여</li>
+          </ul>
+        </div>
+
+
+                <div class="person">
+                  <p class="name-line">
+                    <strong class="name">송규만</strong>
+                    <span class="affiliation">홍익대학교 교수</span>
+                  </p>
+                  <ul class="project-list">
+                    <li>면목동 172-1 일대 재개발 신속통합기획 참여</li>
+                  </ul>
+                </div>
+
+
+
+
+                <div class="person">
+                  <p class="name-line">
+                    <strong class="name">홍경구</strong>
+                    <span class="affiliation">단국대학교 교수</span>
+                  </p>
+                  <ul class="project-list">
+                    <li>신림5구역 재개발 신속통합기획 참여</li>
+                  </ul>
+                </div>
+
+      </div>
+    </section>
+          </div>
+        </div>
+
+
+
+      </div>
+
+
+      <div id="region-north" class="section container">
+        <h2>동북권</h2>
+
+        <!-- 📌 탭 메뉴 -->
+        <ul class="nav nav-tabs mb-3" id="northTabs">
+          <li class="nav-item"><a class="nav-link active" href="#" onclick="showDistrict('gb')">강북구</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" onclick="showDistrict('nw')">노원구</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" onclick="showDistrict('db')">도봉구</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" onclick="showDistrict('sb')">성북구</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" onclick="showDistrict('sd')">성동구</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" onclick="showDistrict('gj')">광진구</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" onclick="showDistrict('jr')">중랑구</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" onclick="showDistrict('ddm')">동대문구</a></li>
+        </ul>
+
+        <!-- 📌 탭 콘텐츠 -->
+        <div id="gb" class="district-tab">
+          <h4>강북구</h4>
+          <table class="table table-bordered">
+            <thead>
+              <tr><th>대상지 명</th><th>위치</th><th>구역 면적</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>미아동 258</td><td></td><td></td></tr>
+              <tr><td>미아동 75</td><td></td><td></td></tr>
+              <tr><td>미아동 791-2882</td><td></td><td></td></tr>
+              <tr><td>미아동 130</td><td></td><td></td></tr>
+              <tr><td>번동 148</td><td></td><td></td></tr>
+              <tr><td>번동 441</td><td></td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div id="nw" class="district-tab" style="display:none;"><h4>노원구</h4><p>노원구 대상지 준비중입니다.</p>
+          <table class="table table-bordered">
+            <thead>
+              <tr><th>대상지 명</th><th>위치</th><th>구역 면적</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>미아동 258</td><td></td><td></td></tr>
+              <tr><td>미아동 75</td><td></td><td></td></tr>
+              <tr><td>미아동 791-2882</td><td></td><td></td></tr>
+              <tr><td>미아동 130</td><td></td><td></td></tr>
+              <tr><td>번동 148</td><td></td><td></td></tr>
+              <tr><td>번동 441</td><td></td><td></td></tr>
+            </tbody>
+          </table>
+
+
+
+        </div>
+        <div id="db" class="district-tab" style="display:none;"><h4>도봉구</h4><p>도봉구 대상지 준비중입니다.</p>
+
+          <table class="table table-bordered">
+            <thead>
+              <tr><th>대상지 명</th><th>위치</th><th>구역 면적</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>미아동 258</td><td></td><td></td></tr>
+              <tr><td>미아동 75</td><td></td><td></td></tr>
+              <tr><td>미아동 791-2882</td><td></td><td></td></tr>
+              <tr><td>미아동 130</td><td></td><td></td></tr>
+              <tr><td>번동 148</td><td></td><td></td></tr>
+              <tr><td>번동 441</td><td></td><td></td></tr>
+            </tbody>
+          </table>
+
+        </div>
+        <div id="sb" class="district-tab" style="display:none;"><h4>성북구</h4><p>성북구 대상지 준비중입니다.</p>
+
+          <table class="table table-bordered">
+            <thead>
+              <tr><th>대상지 명</th><th>위치</th><th>구역 면적</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>미아동 258</td><td></td><td></td></tr>
+              <tr><td>미아동 75</td><td></td><td></td></tr>
+              <tr><td>미아동 791-2882</td><td></td><td></td></tr>
+              <tr><td>미아동 130</td><td></td><td></td></tr>
+              <tr><td>번동 148</td><td></td><td></td></tr>
+              <tr><td>번동 441</td><td></td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="sd" class="district-tab" style="display:none;"><h4>성동구</h4><p>성동구 대상지 준비중입니다.</p>
+
+          <table class="table table-bordered">
+            <thead>
+              <tr><th>대상지 명</th><th>위치</th><th>구역 면적</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>미아동 258</td><td></td><td></td></tr>
+              <tr><td>미아동 75</td><td></td><td></td></tr>
+              <tr><td>미아동 791-2882</td><td></td><td></td></tr>
+              <tr><td>미아동 130</td><td></td><td></td></tr>
+              <tr><td>번동 148</td><td></td><td></td></tr>
+              <tr><td>번동 441</td><td></td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="gj" class="district-tab" style="display:none;"><h4>광진구</h4><p>광진구 대상지 준비중입니다.</p>
+
+          <table class="table table-bordered">
+            <thead>
+              <tr><th>대상지 명</th><th>위치</th><th>구역 면적</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>미아동 258</td><td></td><td></td></tr>
+              <tr><td>미아동 75</td><td></td><td></td></tr>
+              <tr><td>미아동 791-2882</td><td></td><td></td></tr>
+              <tr><td>미아동 130</td><td></td><td></td></tr>
+              <tr><td>번동 148</td><td></td><td></td></tr>
+              <tr><td>번동 441</td><td></td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="jr" class="district-tab" style="display:none;"><h4>중랑구</h4><p>중랑구 대상지 준비중입니다.</p>
+          <table class="table table-bordered">
+            <thead>
+              <tr><th>대상지 명</th><th>위치</th><th>구역 면적</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>상봉13구역</td><td></td><td></td></tr>
+              <tr><td>면목7구역</td><td></td><td></td></tr>
+              <tr><td>면목동 172-1 일대</td><td></td><td></td></tr>
+              <tr><td>면목동 174 일대</td><td></td><td></td></tr>
+              <tr><td>중곡동 254-15 일대</td><td></td><td></td></tr>
+              <tr><td>중화동 309-39 일대</td><td></td><td></td></tr>
+            </tbody>
+          </table>
+
+        </div>
+        <div id="ddm" class="district-tab" style="display:none;"><h4>동대문구</h4><p>동대문구 대상지 준비중입니다.</p>
+
+
+          <table class="table table-bordered">
+            <thead>
+              <tr><th>대상지 명</th><th>위치</th><th>구역 면적</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>장안동 134-14</td><td></td><td></td></tr>
+              <tr><td>용두3구역</td><td></td><td></td></tr>
+              <tr><td>청량리9구역</td><td></td><td></td></tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="region-center" class="section container">
+        <h2>도심권</h2>
+
+         <p>도심은...</p>
+
+                 <!-- 📌 탭 메뉴 -->
+                 <ul class="nav nav-tabs mb-3" id="northTabs">
+                   <li class="nav-item"><a class="nav-link active" href="#" onclick="showDistrict('jn')">종로구</a></li>
+                   <li class="nav-item"><a class="nav-link" href="#" onclick="showDistrict('jg')">중구</a></li>
+                   <li class="nav-item"><a class="nav-link" href="#" onclick="showDistrict('ys')">용산구</a></li>
+                 </ul>
+
+                 <!-- 📌 탭 콘텐츠 -->
+
+                 <div id="jn" class="district-tab" style="display:none;"><h4>종로구</h4><p>종ㄹ로구 대상지 준비중입니다.</p></div>
+                 <div id="jg" class="district-tab" style="display:none;"><h4>중구</h4><p>중구 대상지 준비중입니다.</p></div>
+                 <div id="ys" class="district-tab" style="display:none;"><h4>용산구</h4><p>용산구 대상지 준비중입니다.</p></div>
+
+
+      <div id="region-southwest" class="section container">
+        <h2>서남권</h2>
+         <p>※ VWorld 제공 항공/위성 지도 기반</p>
+      </div>
+            <div id="region-southeast" class="section container">
+              <h2>동남권</h2>
+               <p>※ VWorld 제공 항공/위성 지도 기반</p>
+            </div>
+            <div id="region-northwest" class="section container">
+              <h2>서북권</h2>
+               <p>※ VWorld 제공 항공/위성 지도 기반</p>
+            </div>
+  <footer>
+    &copy; 2025 서울시 신속통합기획과 | 도시정책 아카이브<br>
+    <div class="meta">
+      웹사이트 기획/운영: 서울특별시 도시공간본부 | 기술지원: chatGPT<br>
+      버전: 1.0 | 최종 수정일: 2025.04.23 | 이메일: han902@seoul.go.kr
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
